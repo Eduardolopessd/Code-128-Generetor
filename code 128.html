@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode 128 Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .input-group {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #barcode-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        svg {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Barcode 128 Generator</h1>
+        
+        <div class="input-group">
+            <input type="text" id="numberInput" placeholder="Enter numbers here">
+            <button onclick="generateBarcode()">Generate Barcode</button>
+        </div>
+
+        <div id="barcode-container">
+            <svg id="barcode"></svg>
+        </div>
+    </div>
+
+    <script>
+        function generateBarcode() {
+            const input = document.getElementById('numberInput').value;
+            if (input) {
+                JsBarcode("#barcode", input, {
+                    format: "CODE128",
+                    displayValue: true,
+                    fontSize: 16,
+                    lineColor: "#000",
+                    width: 2,
+                    height: 100
+                });
+            }
+        }
+    </script>
+</body>
+</html>
